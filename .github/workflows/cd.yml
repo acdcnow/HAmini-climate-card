@@ -45,7 +45,7 @@ jobs:
           file: dist/*
           file_glob: true
           overwrite: true
-          # tags like v2.8.0-beta.1 become GitHub pre-releases
+          # tags containing a '-' (e.g. v2.8.0-beta.2) become GitHub pre-releases
           prerelease: ${{ contains(github.ref_name, '-') }}
           promote: false
           make_latest: ${{ !contains(github.ref_name, '-') }}

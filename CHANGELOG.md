@@ -3,6 +3,25 @@
 All notable changes to this project are documented in this file.
 The format is based on the version tags of this repository; the unabridged, per-release notes are kept in [`release_notes/`](release_notes).
 
+## v2.8.0-beta.2
+
+Repository renamed to `mini-climate-card` and documentation refreshed. The only change that affects the
+built card is the repository URL used by the card picker.
+
+### CHANGED
+- The GitHub repository was renamed `acdcnow/HAmini-climate-card` → `acdcnow/mini-climate-card`.
+  GitHub redirects the old URLs; HACS installs go to `www/community/mini-climate-card`.
+- The card picker `documentationURL` points at the new repository name — the only difference in
+  `mini-climate-card-bundle.js` compared to `v2.8.0-beta.1`.
+- `README.md`: badges, install/update/`wget`/clone URLs and the custom-repository instructions updated
+  for the new repository name; the current pre-release is listed in the notice.
+- `info.md` (the file HACS displays): the version badge now includes pre-releases, the changelog link
+  points at the release page, and the 2026.9 highlights are summarised.
+- `package.json`: `repository`/`homepage`/`bugs` point at the new repository name.
+
+### NOTE
+- Pre-release: enable *Show beta versions* in HACS to install it, or download the release asset.
+
 ## v2.8.0-beta.1
 
 Home Assistant **2026.9** compatibility release (tested against `home-assistant-frontend 20260826.7`).

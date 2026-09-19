@@ -769,5 +769,5 @@ window.customCards.push({
   name: 'Mini Climate',
   preview: true,
   description: 'A custom climate card',
-  documentationURL: 'https://github.com/acdcnow/HAmini-climate-card',
+  documentationURL: 'https://github.com/acdcnow/mini-climate-card',
 });

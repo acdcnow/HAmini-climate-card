@@ -13,10 +13,10 @@
   ],
   "main": "src/main.js",
   "module": "src/main.js",
-  "repository": "git+https://github.com/acdcnow/HAmini-climate-card.git",
-  "homepage": "https://github.com/acdcnow/HAmini-climate-card",
+  "repository": "git+https://github.com/acdcnow/mini-climate-card.git",
+  "homepage": "https://github.com/acdcnow/mini-climate-card",
   "bugs": {
-    "url": "https://github.com/acdcnow/HAmini-climate-card/issues"
+    "url": "https://github.com/acdcnow/mini-climate-card/issues"
   },
   "author": "Artem Sedykh <anavrin72@gmail.com>",
   "license": "MIT",

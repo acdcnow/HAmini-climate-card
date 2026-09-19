@@ -1,14 +1,14 @@
 # Mini Climate Card
 
-[![Last Version](https://img.shields.io/github/v/release/acdcnow/HAmini-climate-card?label=release)](https://github.com/acdcnow/HAmini-climate-card/releases)
-[![CI](https://github.com/acdcnow/HAmini-climate-card/actions/workflows/ci.yml/badge.svg)](https://github.com/acdcnow/HAmini-climate-card/actions/workflows/ci.yml)
+[![Last Version](https://img.shields.io/github/v/release/acdcnow/mini-climate-card?label=release)](https://github.com/acdcnow/mini-climate-card/releases)
+[![CI](https://github.com/acdcnow/mini-climate-card/actions/workflows/ci.yml/badge.svg)](https://github.com/acdcnow/mini-climate-card/actions/workflows/ci.yml)
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 
 A minimalistic yet customizable climate card for [Home Assistant](https://home-assistant.io/) Lovelace UI.  
 Please ⭐️ this repo if you find it useful  
 
 <p style="align-content: center">
-  <img alt="card preview" src="https://raw.githubusercontent.com/acdcnow/HAmini-climate-card/master/images/preview.png" />
+  <img alt="card preview" src="https://raw.githubusercontent.com/acdcnow/mini-climate-card/master/images/preview.png" />
 </p>
 
 ## Notice
@@ -26,11 +26,11 @@ This is the [acdcnow](https://github.com/acdcnow) fork of
 *This card is available in [HACS](https://github.com/hacs/integration) (Home Assistant Community Store)*
 
 Since this is a fork, add it to HACS as a **custom repository**:
-HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/HAmini-climate-card`, type **Dashboard**.
+HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/mini-climate-card`, type **Dashboard**.
 
 ### Simple install
 
-1. Download and copy `mini-climate-card-bundle.js` from the [latest release](https://github.com/acdcnow/HAmini-climate-card/releases) into your `config/www` directory.
+1. Download and copy `mini-climate-card-bundle.js` from the [latest release](https://github.com/acdcnow/mini-climate-card/releases) into your `config/www` directory.
 
 2. Add a reference to `mini-climate-card-bundle.js` inside your `ui-lovelace.yaml`.
 
@@ -47,7 +47,7 @@ HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/H
 2. Grab `mini-climate-card-bundle.js`
 
   ```console
-  $ wget https://github.com/acdcnow/HAmini-climate-card/releases/download/v2.8.0-beta.1/mini-climate-card-bundle.js
+  $ wget https://github.com/acdcnow/mini-climate-card/releases/download/v2.8.0-beta.1/mini-climate-card-bundle.js
   ```
 
 3. Add a reference to `mini-climate-card-bundle.js` inside your `ui-lovelace.yaml`.
@@ -61,7 +61,7 @@ HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/H
 ## Updating
 1. Find your `mini-climate-card-bundle.js` file in `config/www` or wherever you ended up storing it.
 
-2. Replace the local file with the latest one attached in the [latest release](https://github.com/acdcnow/HAmini-climate-card/releases).
+2. Replace the local file with the latest one attached in the [latest release](https://github.com/acdcnow/mini-climate-card/releases).
 
 3. Add the new version number to the end of the cards reference url in your `ui-lovelace.yaml` like below.
 
@@ -887,7 +887,7 @@ indicators:
 **Clone this repository into your `config/www` folder using git.**
 
  ```console
-$ git clone https://github.com/acdcnow/HAmini-climate-card.git
+$ git clone https://github.com/acdcnow/mini-climate-card.git
 ```
 
 **Add a reference to the card in your `ui-lovelace.yaml`.**

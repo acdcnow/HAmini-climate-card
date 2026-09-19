@@ -22,6 +22,37 @@ export default class ClimateObject {
     };
   }
 
+  /**
+   * Home Assistant exposes `hass.formatEntityState()` (2023.4) and
+   * `hass.formatEntityAttributeValue()` (2023.9). They resolve the translations
+   * of the integration that owns the entity, including custom hvac modes and
+   * fan modes of third party integrations, which the hard coded translation
+   * keys of `getLabel()` cannot do. `getLabel()` is the fallback for older
+   * Home Assistant versions.
+   */
+  formatState(state, labels) {
+    const { hass, entity } = this;
+
+    if (!entity.entity_id || typeof hass.formatEntityState !== 'function')
+      return getLabel(hass, labels, state);
+
+    const name = hass.formatEntityState(entity, state);
+
+    return name || getLabel(hass, labels, state);
+  }
+
+  formatAttributeValue(attribute, value, labels) {
+    const { hass, entity } = this;
+
+    if (value === undefined || value === null || !entity.entity_id
+      || typeof hass.formatEntityAttributeValue !== 'function')
+      return getLabel(hass, labels, value);
+
+    const name = hass.formatEntityAttributeValue(entity, attribute, value);
+
+    return name || getLabel(hass, labels, value);
+  }
+
   get lastChanged() {
     return this.entity.last_changed;
   }
@@ -34,8 +65,10 @@ export default class ClimateObject {
     const source = (this.config.secondary_info && this.config.secondary_info.source) || {};
     const action = this.attr.hvac_action;
     let item = { id: action };
-    const labelPrefix = 'state_attributes.climate.hvac_action';
-    item.name = getLabel(this.hass, [`${labelPrefix}.${action}`], action);
+    item.name = this.formatAttributeValue('hvac_action', action, [
+      `component.climate.entity_component._.state_attributes.hvac_action.state.${action}`,
+      `state_attributes.climate.hvac_action.${action}`,
+    ]);
 
     if (action in source) {
       if (typeof source[action] === 'string')
@@ -61,8 +94,12 @@ export default class ClimateObject {
 
     for (let i = 0; i < hvacModes.length; i += 1) {
       const hvacMode = hvacModes[i];
-      const labels = [`state.climate.${hvacMode}`, `component.climate.state._.${hvacMode}`];
-      const item = { id: hvacMode, name: getLabel(this.hass, labels, hvacMode) };
+      const labels = [
+        `component.climate.entity_component._.state.${hvacMode}`,
+        `component.climate.state._.${hvacMode}`,
+        `state.climate.${hvacMode}`,
+      ];
+      const item = { id: hvacMode, name: this.formatState(hvacMode, labels) };
       const iconId = hvacMode.toString().toUpperCase();
       if (iconId in ICON)
         item.icon = ICON[iconId];
@@ -75,11 +112,13 @@ export default class ClimateObject {
   get defaultFanModes() {
     const fanModes = this.attr.fan_modes;
     const source = {};
-    const labelPrefix = 'state_attributes.climate.fan_mode';
 
     for (let i = 0; i < fanModes.length; i += 1) {
       const mode = fanModes[i];
-      source[mode] = getLabel(this.hass, [`${labelPrefix}.${mode}`], mode);
+      source[mode] = this.formatAttributeValue('fan_mode', mode, [
+        `component.climate.entity_component._.state_attributes.fan_mode.state.${mode}`,
+        `state_attributes.climate.fan_mode.${mode}`,
+      ]);
     }
     return source;
   }

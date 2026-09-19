@@ -104,6 +104,7 @@ export default class ClimateTargetTemperature extends ScopedRegistryHost(LitElem
     .temp {
       width: calc(var(--mc-unit) * .75);
       height: calc(var(--mc-unit) * .75);
+      --ha-icon-button-size: calc(var(--mc-unit) * .75);
       --mdc-icon-button-size: calc(var(--mc-unit) * .75);
       color: var(--mc-icon-color);
     }

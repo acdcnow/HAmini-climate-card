@@ -114,6 +114,7 @@ export default class ClimateDropdownBase extends ScopedRegistryHost(LitElement) 
         ha-icon-button {
           width: calc(var(--mc-dropdown-unit));
           height: calc(var(--mc-dropdown-unit));
+          --ha-icon-button-size: calc(var(--mc-dropdown-unit));
           --mdc-icon-button-size: calc(var(--mc-dropdown-unit));
         }
         mwc-item > *:nth-child(2) {

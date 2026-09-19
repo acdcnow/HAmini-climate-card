@@ -456,13 +456,20 @@ class MiniClimate extends ScopedRegistryHost(LitElement) {
       tap_action: {
         action: 'more-info',
         navigation_path: '',
+        url_path: '',
         url: '',
         entity: '',
+        perform_action: '',
         service: '',
+        data: {},
         service_data: {},
       },
       ...config,
     };
+
+    // tap_action is allowed to be a plain string, e.g. `tap_action: none`
+    if (typeof this.config.tap_action === 'string')
+      this.config.tap_action = { action: this.config.tap_action };
 
     this.config.indicators = this.getIndicatorsConfig(config);
 
@@ -652,7 +659,6 @@ class MiniClimate extends ScopedRegistryHost(LitElement) {
 
     return html`
         <ha-icon-button class='toggle-button ${this.toggleButtonCls()}'
-          .icon=${this.config.toggle.icon}
           @click=${e => this.handleToggle(e)}>
             <ha-icon .icon=${this.config.toggle.icon}></ha-icon>
         </ha-icon-button>
@@ -697,7 +703,7 @@ class MiniClimate extends ScopedRegistryHost(LitElement) {
       '--initial': this.initial,
       '--collapse': config.collapse,
       '--group': config.group,
-      '--more-info': config.tap_action !== 'none',
+      '--more-info': config.tap_action.action !== 'none',
       '--inactive': !this.climate.isActive,
       '--unavailable': this.climate.isUnavailable,
     });
@@ -763,5 +769,5 @@ window.customCards.push({
   name: 'Mini Climate',
   preview: true,
   description: 'A custom climate card',
-  documentationURL: 'https://github.com/artem-sedykh/mini-climate-card',
+  documentationURL: 'https://github.com/acdcnow/HAmini-climate-card',
 });

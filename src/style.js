@@ -12,17 +12,23 @@ const style = css`
     --mc-accent-color: var(--mini-climate-accent-color, var(--accent-color, #f39c12));
     --mc-text-color: var(--mini-climate-base-color, var(--primary-text-color, #000));
     --mc-active-color: var(--mc-accent-color);
-    --mc-button-color: var(--mini-climate-button-color, var(--paper-item-icon-color, #44739e));
+    --mc-button-color:
+      var(--mini-climate-button-color,
+        var(--state-icon-color,
+          var(--paper-item-icon-color, #44739e)));
     --mc-icon-color:
       var(--mini-climate-icon-color,
         var(--mini-climate-base-color,
-          var(--paper-item-icon-color, #44739e)));
+          var(--state-icon-color,
+            var(--paper-item-icon-color, #44739e))));
     --mc-icon-active-color: var(--state-binary_sensor-active-color, #ffc107);
     --mc-info-opacity: 1;
     --mc-bg-opacity: var(--mini-climate-background-opacity, 1);
     color: var(--mc-text-color);
     --mc-dropdown-unit: calc(var(--mc-unit) * .75);
     --paper-item-min-height: var(--mc-unit);
+    /* --ha-icon-button-size replaced --mdc-icon-button-size in HA 2024.8 */
+    --ha-icon-button-size: calc(var(--mc-unit) * .75);
     --mdc-icon-button-size: calc(var(--mc-unit) * 0.75);
   }
   ha-card.--group {
@@ -142,6 +148,7 @@ const style = css`
   .toggle-button {
     width: calc(var(--mc-unit) * .75);
     height: calc(var(--mc-unit) * .75);
+    --ha-icon-button-size: calc(var(--mc-unit) * .75);
     --mdc-icon-button-size: calc(var(--mc-unit) * .75);
     color: var(--mc-icon-color);
     margin-left: auto;

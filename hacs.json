@@ -2,5 +2,6 @@
   "name": "Mini Climate Card",
   "render_readme": false,
   "filename": "mini-climate-card-bundle.js",
+  "hide_default_branch": true,
   "homeassistant": "2022.11.0"
 }

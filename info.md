@@ -1,13 +1,13 @@
-[![Last Version](https://img.shields.io/github/v/release/acdcnow/mini-climate-card?label=release&include_prereleases)](https://github.com/acdcnow/mini-climate-card/releases)
+[![Last Version](https://img.shields.io/github/v/release/acdcnow/mini-climate-card?label=release)](https://github.com/acdcnow/mini-climate-card/releases/latest)
 [![CI](https://github.com/acdcnow/mini-climate-card/actions/workflows/ci.yml/badge.svg)](https://github.com/acdcnow/mini-climate-card/actions/workflows/ci.yml)
 
 A minimalistic yet customizable climate card for [Home Assistant](https://github.com/home-assistant/home-assistant) Lovelace UI.
 
-**Current release: [v2.8.0-beta.2](https://github.com/acdcnow/mini-climate-card/releases)** (pre-release — enable *Show beta versions* in HACS to install it)
+**Current release: [v2.8.0](https://github.com/acdcnow/mini-climate-card/releases/latest)**
 
 Add `https://github.com/acdcnow/mini-climate-card` as a **custom repository** in HACS
 (*⋮* → **Custom repositories**, category **Dashboard**) — this fork is not part of the HACS default store.
-When a version is listed as *pre-release* only, select it explicitly in the version selector or enable beta versions.
+HACS installs the JavaScript file from the newest release asset, so no build step is needed.
 
 Updated for **Home Assistant 2026.9**:
 

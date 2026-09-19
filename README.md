@@ -17,7 +17,7 @@ This is the [acdcnow](https://github.com/acdcnow) fork of
 [mini-climate-card](https://github.com/artem-sedykh/mini-climate-card), based on the
 [regevbr](https://github.com/regevbr/mini-climate-card) fork, updated for the Home Assistant **2026.9** frontend.
 
-- current release: **[v2.8.0-beta.2](https://github.com/acdcnow/mini-climate-card/releases)** (pre-release)
+- current release: **[v2.8.0](https://github.com/acdcnow/mini-climate-card/releases/latest)**
 - tested with Home Assistant 2026.9 (`home-assistant-frontend 20260826.7`)
 - v2 is only compatible from version 2022.11 onwards
 - all changes are listed in the [CHANGELOG](CHANGELOG.md)
@@ -28,16 +28,18 @@ This is the [acdcnow](https://github.com/acdcnow) fork of
 
 Since this is a fork, add it to HACS as a **custom repository**:
 HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/mini-climate-card`, type **Dashboard**.
+HACS then installs the JavaScript file from the newest release asset.
+Pre-release builds (`-beta.x` tags) only show up when *Show beta versions* is enabled in HACS.
 
 ### Simple install
 
-1. Download and copy `mini-climate-card-bundle.js` from the [latest release](https://github.com/acdcnow/mini-climate-card/releases) into your `config/www` directory.
+1. Download and copy `mini-climate-card-bundle.js` from the [latest release](https://github.com/acdcnow/mini-climate-card/releases/latest) into your `config/www` directory.
 
 2. Add a reference to `mini-climate-card-bundle.js` inside your `ui-lovelace.yaml`.
 
   ```yaml
   resources:
-    - url: /local/mini-climate-card-bundle.js?v=2.8.0-beta.2
+    - url: /local/mini-climate-card-bundle.js?v=2.8.0
       type: module
   ```
 
@@ -48,27 +50,27 @@ HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/m
 2. Grab `mini-climate-card-bundle.js`
 
   ```console
-  $ wget https://github.com/acdcnow/mini-climate-card/releases/download/v2.8.0-beta.2/mini-climate-card-bundle.js
+  $ wget https://github.com/acdcnow/mini-climate-card/releases/download/v2.8.0/mini-climate-card-bundle.js
   ```
 
 3. Add a reference to `mini-climate-card-bundle.js` inside your `ui-lovelace.yaml`.
 
   ```yaml
   resources:
-    - url: /local/mini-climate-card-bundle.js?v=2.8.0-beta.2
+    - url: /local/mini-climate-card-bundle.js?v=2.8.0
       type: module
   ```
 
 ## Updating
 1. Find your `mini-climate-card-bundle.js` file in `config/www` or wherever you ended up storing it.
 
-2. Replace the local file with the latest one attached in the [latest release](https://github.com/acdcnow/mini-climate-card/releases).
+2. Replace the local file with the latest one attached in the [latest release](https://github.com/acdcnow/mini-climate-card/releases/latest).
 
 3. Add the new version number to the end of the cards reference url in your `ui-lovelace.yaml` like below.
 
   ```yaml
   resources:
-    - url: /local/mini-climate-card-bundle.js?v=2.8.0-beta.2
+    - url: /local/mini-climate-card-bundle.js?v=2.8.0
       type: module
   ```
 

@@ -3,6 +3,34 @@
 All notable changes to this project are documented in this file.
 The format is based on the version tags of this repository; the unabridged, per-release notes are kept in [`release_notes/`](release_notes).
 
+## v2.8.0
+
+First stable release of this fork: full **Home Assistant 2026.9** compatibility (tested against
+`home-assistant-frontend 20260826.7`). Consolidates `v2.8.0-beta.1` and `v2.8.0-beta.2` — no functional
+change since `v2.8.0-beta.2`.
+
+### FIXED
+- **Mode names / labels were not resolved**: `getLabel()` read the removed `hass.resources` map;
+  translations now go through `hass.localize()`.
+- **`more-info` / `navigate` tap actions did nothing**: `hass-more-info` and `location-changed` were
+  fired without `bubbles: true`, so they never reached the `home-assistant` element listening for them.
+- **`target_temperature.change_action` received an undefined `climate_entity`**
+  (`this.hass[this.config.entity]` → `this.hass.states[this.config.entity]`).
+- **Icon buttons rendered at the new 48 px default size**: `--mdc-icon-button-size` →
+  `--ha-icon-button-size`.
+- `--more-info` was applied even with `tap_action: none`, and a string `tap_action` was not normalized.
+
+### ADDED
+- `action: perform-action` (`perform_action` / `data` / `target`) and `url_path` — the spellings
+  introduced in HA 2024.8. `call-service` / `service` / `service_data` / `url` keep working.
+- Mode names resolved with `hass.formatEntityState()` / `hass.formatEntityAttributeValue()` when available.
+- Modern theme variable `--state-icon-color` and the current translation keys for mode labels.
+
+### CHANGED
+- Repository renamed `HAmini-climate-card` → `mini-climate-card`.
+- `hacs.json`: `hide_default_branch` — HACS installs from releases instead of the default branch.
+- GitHub Actions: Node 24 based action versions; tags containing `-` publish pre-releases.
+
 ## v2.8.0-beta.2
 
 Repository renamed to `mini-climate-card` and documentation refreshed. The only change that affects the

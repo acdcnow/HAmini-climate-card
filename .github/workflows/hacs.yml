@@ -16,3 +16,7 @@ jobs:
         uses: hacs/action@main
         with:
           category: plugin
+          # NOTE: the plugin structure check resolves `filename` from the release
+          # assets. HACS skips pre-releases (hacs/repositories/base.py:
+          # `if release.draft or (release.prerelease and not prerelease)`), so
+          # this job can only pass once a *non* pre-release exists.

@@ -5,6 +5,10 @@ A minimalistic yet customizable climate card for [Home Assistant](https://github
 
 **Current release: [v2.8.0-beta.2](https://github.com/acdcnow/mini-climate-card/releases)** (pre-release — enable *Show beta versions* in HACS to install it)
 
+Add `https://github.com/acdcnow/mini-climate-card` as a **custom repository** in HACS
+(*⋮* → **Custom repositories**, category **Dashboard**) — this fork is not part of the HACS default store.
+When a version is listed as *pre-release* only, select it explicitly in the version selector or enable beta versions.
+
 Updated for **Home Assistant 2026.9**:
 
 - translations are resolved with `hass.localize()` (`hass.resources` no longer exists)

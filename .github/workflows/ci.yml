@@ -11,19 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 18.x
-      - name: Cahce dependencies
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm # npm cache files are stored in `~/.npm` on Linux/macOS
-          key: ${{ runner.OS }}-node-18.x-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-18.x
-            ${{ runner.OS }}-
+          node-version: 20.x
+          cache: npm
       - name: Install dependencies
         run: |
           npm install

@@ -1,32 +1,42 @@
 # Mini Climate Card
 
-[![Last Version](https://img.shields.io/github/package-json/v/artem-sedykh/mini-climate-card?label.svg=release)](https://github.com/artem-sedykh/mini-climate-card/releases/latest)
-[![Build Status](https://travis-ci.com/artem-sedykh/mini-climate-card.svg?branch=master)](https://travis-ci.com/artem-sedykh/mini-climate-card)
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
+[![Last Version](https://img.shields.io/github/v/release/acdcnow/HAmini-climate-card?label=release)](https://github.com/acdcnow/HAmini-climate-card/releases)
+[![CI](https://github.com/acdcnow/HAmini-climate-card/actions/workflows/ci.yml/badge.svg)](https://github.com/acdcnow/HAmini-climate-card/actions/workflows/ci.yml)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 
 A minimalistic yet customizable climate card for [Home Assistant](https://home-assistant.io/) Lovelace UI.  
 Please ⭐️ this repo if you find it useful  
 
 <p style="align-content: center">
-  <img alt="card preview" src="https://raw.githubusercontent.com/artem-sedykh/mini-climate-card/master/images/preview.png" />
+  <img alt="card preview" src="https://raw.githubusercontent.com/acdcnow/HAmini-climate-card/master/images/preview.png" />
 </p>
 
 ## Notice
-v2 is only compatible from version 2022.11 onwards 
+
+This is the [acdcnow](https://github.com/acdcnow) fork of
+[mini-climate-card](https://github.com/artem-sedykh/mini-climate-card), based on the
+[regevbr](https://github.com/regevbr/mini-climate-card) fork, updated for the Home Assistant **2026.9** frontend.
+
+- tested with Home Assistant 2026.9 (`home-assistant-frontend 20260826.7`)
+- v2 is only compatible from version 2022.11 onwards
+- all changes are listed in the [CHANGELOG](CHANGELOG.md)
 
 ## Install
 
 *This card is available in [HACS](https://github.com/hacs/integration) (Home Assistant Community Store)*
 
+Since this is a fork, add it to HACS as a **custom repository**:
+HACS → *⋮* → **Custom repositories** → URL `https://github.com/acdcnow/HAmini-climate-card`, type **Dashboard**.
+
 ### Simple install
 
-1. Download and copy `mini-climate-card-bundle.js` from the [latest release](https://github.com/artem-sedykh/mini-climate-card/releases/latest) into your `config/www` directory.
+1. Download and copy `mini-climate-card-bundle.js` from the [latest release](https://github.com/acdcnow/HAmini-climate-card/releases) into your `config/www` directory.
 
 2. Add a reference to `mini-climate-card-bundle.js` inside your `ui-lovelace.yaml`.
 
   ```yaml
   resources:
-    - url: /local/mini-climate-card-bundle.js?v=2.21
+    - url: /local/mini-climate-card-bundle.js?v=2.8.0-beta.1
       type: module
   ```
 
@@ -37,27 +47,27 @@ v2 is only compatible from version 2022.11 onwards
 2. Grab `mini-climate-card-bundle.js`
 
   ```console
-  $ wget https://github.com/artem-sedykh/mini-climate-card/releases/download/v2.2.1/mini-climate-card-bundle.js
+  $ wget https://github.com/acdcnow/HAmini-climate-card/releases/download/v2.8.0-beta.1/mini-climate-card-bundle.js
   ```
 
 3. Add a reference to `mini-climate-card-bundle.js` inside your `ui-lovelace.yaml`.
 
   ```yaml
   resources:
-    - url: /local/mini-climate-card-bundle.js?v=2.2.1
+    - url: /local/mini-climate-card-bundle.js?v=2.8.0-beta.1
       type: module
   ```
 
 ## Updating
 1. Find your `mini-climate-card-bundle.js` file in `config/www` or wherever you ended up storing it.
 
-2. Replace the local file with the latest one attached in the [latest release](https://github.com/artem-sedykh/mini-climate-card/releases/latest).
+2. Replace the local file with the latest one attached in the [latest release](https://github.com/acdcnow/HAmini-climate-card/releases).
 
 3. Add the new version number to the end of the cards reference url in your `ui-lovelace.yaml` like below.
 
   ```yaml
   resources:
-    - url: /local/mini-climate-card-bundle.js?v=2.2.1
+    - url: /local/mini-climate-card-bundle.js?v=2.8.0-beta.1
       type: module
   ```
 
@@ -572,16 +582,32 @@ buttons:
 
 | Name            |  Type  |   Default   |                                    Options                                    | Description                                                                       |
 |-----------------|:------:|:-----------:|:-----------------------------------------------------------------------------:|-----------------------------------------------------------------------------------|
-| action          | string | `more-info` | `more-info` / `navigate` / `call-service` / `fire-dom-event` / `url` / `none` | Action to perform.                                                                |
+| action          | string | `more-info` | `more-info` / `navigate` / `perform-action` / `call-service` / `fire-dom-event` / `url` / `none` | Action to perform.                                                                |
 | entity          | string |             |                                 Any entity id                                 | Override default entity of `more-info`, when  `action` is defined as `more-info`. |
-| service         | string |             |                                  Any service                                  | Service to call (e.g. `fan.turn_on`) when `action` is defined as `call-service`   |
-| service_data    | object |             |                               Any service data                                | Service data to include with the service call.                                    |
+| perform_action  | string |             |                                  Any service                                  | Service to call (e.g. `climate.set_hvac_mode`) when `action` is `perform-action`. |
+| data            | object |             |                               Any service data                                | Service data to include with the service call.                                    |
+| target          | object |             |                          `entity_id` / `device_id` / `area_id`                  | Target of the service call, e.g. `entity_id: climate.my_ac`.                      |
 | navigation_path | string |             |                                   Any path                                    | Path to navigate to (e.g. `/lovelace/0/`) when `action` is defined as `navigate`. |
-| url             | string |             |                                    Any URL                                    | URL to open when `action` is defined as `url`.                                    |
+| url_path        | string |             |                                    Any URL                                    | URL to open when `action` is defined as `url`.                                    |
+| service         | string |             |                                  Any service                                  | *Deprecated*, alias of `perform_action` (HA < 2024.8 spelling).                   |
+| service_data    | object |             |                               Any service data                                | *Deprecated*, alias of `data` (HA < 2024.8 spelling).                             |
+| url             | string |             |                                    Any URL                                    | *Deprecated*, alias of `url_path` (HA < 2024.8 spelling).                         |
 
 #### tap action example
 ```yaml
 # toggle example
+# perform-action example (HA 2024.8+, this is the current spelling)
+type: custom:mini-climate
+entity: climate.my_ac
+tap_action:
+  action: perform-action
+  perform_action: climate.set_hvac_mode
+  target:
+    entity_id: climate.my_ac
+  data:
+    hvac_mode: 'off'
+
+# the pre 2024.8 call-service spelling is still supported
 # call-service example
 type: custom:mini-climate
 entity: climate.my_ac
@@ -610,12 +636,13 @@ tap_action:
   action: navigate
   navigation_path: '/lovelace/4'
 
-# navigate example
+# url example
+# (the pre 2024.8 spelling `url:` is still supported)
 type: custom:mini-climate
 entity: climate.my_ac
 tap_action:
   action: url
-  url: 'https://www.google.com/'
+  url_path: 'https://www.google.com/'
 
 # none example
 type: custom:mini-climate
@@ -746,10 +773,10 @@ Can be specified by color name, hexadecimal, rgb, rgba, hsl, hsla, basically any
 |---------------------------------|-----------------------------------------------------------------------|---------------------------------|
 | mini-climate-name-font-weight   | 400                                                                   | Font weight of the entity name  |
 | mini-climate-info-font-weight   | 300                                                                   | Font weight of the states       |
-| mini-climate-icon-color         | --mini-humidifier-base-color, var(--paper-item-icon-color, #44739e)   | The color for icons             |
-| mini-climate-button-color       | --mini-humidifier-button-color, var(--paper-item-icon-color, #44739e) | The color for buttons icons     |
+| mini-climate-icon-color         | --mini-humidifier-base-color, var(--state-icon-color, var(--paper-item-icon-color, #44739e))   | The color for icons             |
+| mini-climate-button-color       | --mini-humidifier-button-color, var(--state-icon-color, var(--paper-item-icon-color, #44739e)) | The color for buttons icons     |
 | mini-climate-accent-color       | var(--accent-color)                                                   | The accent color of UI elements |
-| mini-climate-base-color         | var(--primary-text-color) & var(--paper-item-icon-color)              | The color of base text          |
+| mini-climate-base-color         | var(--primary-text-color) & var(--state-icon-color)                   | The color of base text          |
 | mini-climate-background-opacity | 1                                                                     | Opacity of the background       |
 | mini-climate-scale              | 1                                                                     | Scale of the card               |
 | mini-climate-card-box-shadow    | var(--ha-card-box-shadow, none)                                       | The card shadow                 |
@@ -855,12 +882,12 @@ indicators:
 ```
 
 ## Development
-*If you plan to contribute back to this repo, please fork & create the PR against the [dev](https://github.com/artem-sedykh/mini-climate-card/tree/dev) branch.*
+*If you plan to contribute back to this repo, please fork & create the PR against the `master` branch.*
 
 **Clone this repository into your `config/www` folder using git.**
 
  ```console
-$ git clone https://github.com/artem-sedykh/mini-climate-card.git
+$ git clone https://github.com/acdcnow/HAmini-climate-card.git
 ```
 
 **Add a reference to the card in your `ui-lovelace.yaml`.**
@@ -875,9 +902,9 @@ resources:
 
 *Requires `nodejs` & `npm`*
 
-1. Move into the `mini-climate-card` repo, checkout the *dev* branch & install dependencies.
+1. Move into the `mini-climate-card` repo & install dependencies.
 ```console
-$ cd mini-climate-card-dev && git checkout dev && npm install
+$ cd mini-climate-card && npm install
 ```
 
 2. Make changes to the source
@@ -900,11 +927,26 @@ $ npm run watch
 
 
 ## Getting errors?
-Make sure you have `javascript_version: latest` in your `configuration.yaml` under `frontend:`.
-
 Make sure you have the latest version of `mini-climate-card-bundle.js`.
 
-If you have issues after updating the card, try clearing your browsers cache or restart Home Assistant.
+If you have issues after updating the card, try clearing your browsers cache or restart Home Assistant
+(the card logs its version to the browsers console).
+
+### Home Assistant 2026.9+
+Home Assistant 2026.9 ships `home-assistant-frontend 20260826.7`. The frontend keeps removing legacy APIs,
+the card was updated accordingly:
+
+| Removed / renamed in the frontend           | Used before                  | Now                                                                                  |
+|---------------------------------------------|------------------------------|--------------------------------------------------------------------------------------|
+| `hass.resources`                            | reading the translation map  | `hass.localize(key)`                                                                 |
+| `hass.formatEntityState`/`...AttributeValue` | hard coded translation keys  | used for mode names when available, `hass.localize()` as fallback                     |
+| `action: call-service`                      | `service`, `service_data`    | `action: perform-action` with `perform_action`, `data`, `target`                     |
+| `action: url`                               | `url`                        | `url_path`                                                                            |
+| `--mdc-icon-button-size`                    | sizing `ha-icon-button`      | `--ha-icon-button-size`                                                               |
+| `--paper-item-icon-color`                   | icon color                   | `--state-icon-color`                                                                  |
+
+The `hass-more-info` and `location-changed` events are fired with `bubbles: true` again, so the
+`more-info` and `navigate` tap actions reach the Home Assistant app.
 
 If you are getting "Custom element doesn't exist: mini-climate" or running older browsers try replacing `type: module` with `type: js` in your resource reference, like below.
 

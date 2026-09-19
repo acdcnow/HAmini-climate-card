@@ -1,6 +1,6 @@
 {
   "name": "mini-climate-card",
-  "version": "v2.7.2",
+  "version": "v2.8.0-beta.1",
   "description": "a/c card for Home Assistant Lovelace UI",
   "keywords": [
     "home-assistant",
@@ -13,7 +13,11 @@
   ],
   "main": "src/main.js",
   "module": "src/main.js",
-  "repository": "git@github.com:artem-sedykh/mini-climate-card.git",
+  "repository": "git+https://github.com/acdcnow/HAmini-climate-card.git",
+  "homepage": "https://github.com/acdcnow/HAmini-climate-card",
+  "bugs": {
+    "url": "https://github.com/acdcnow/HAmini-climate-card/issues"
+  },
   "author": "Artem Sedykh <anavrin72@gmail.com>",
   "license": "MIT",
   "dependencies": {
